@@ -27,7 +27,7 @@ function isValid(str) {
   for (let i = 0; i < str.length; i++) {
     if (str[i] in pairs) {
       stack.push(str[i])
-    } else if (str[i] === pairs[stack[stack.length - 1]] && stack.length) {
+    } else if (str[i] === pairs[stack[stack.length - 1]]) {
       stack.pop()
     } else {
       return false
