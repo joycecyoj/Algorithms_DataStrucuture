@@ -15,28 +15,27 @@
 // Input: "(])"; Output: false
 // Input: ""; Output: true
 
-
 function isValid(str) {
   let pairs = {
-    '(' : ')',
-    '[' : ']',
-    '{' : '}'
-  }
-  let stack = []
+    '(': ')',
+    '[': ']',
+    '{': '}',
+  };
+  let stack = [];
 
   for (let i = 0; i < str.length; i++) {
     if (str[i] in pairs) {
-      stack.push(str[i])
+      stack.push(str[i]);
     } else if (str[i] === pairs[stack[stack.length - 1]]) {
-      stack.pop()
+      stack.pop();
     } else {
-      return false
+      return false;
     }
   }
 
   if (stack.length === 0) {
-    return true
+    return true;
   } else {
-    return false
+    return false;
   }
 }
