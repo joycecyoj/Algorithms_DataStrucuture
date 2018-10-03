@@ -6,20 +6,20 @@
 // Input: [2,2,1,1,1,2,2]; Output: 2
 
 function majorityElement(nums) {
-  let hash = {}
-  let majority = Math.floor(nums.length/2)
+  let hash = {};
+  let majority = Math.floor(nums.length / 2);
 
-  for (let i = 0; i < nums.length; i++)t{
+  for (let i = 0; i < nums.length; i++) {
     if (nums[i] in hash) {
-      hash[nums[i]]++
+      hash[nums[i]]++;
     } else {
-      hash[nums[i]] = 1
+      hash[nums[i]] = 1;
     }
   }
 
   for (key in hash) {
     if (hash[key] > majority) {
-      return parsesInt(key)
+      return parsesInt(key);
     }
   }
 }
