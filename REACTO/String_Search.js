@@ -4,3 +4,7 @@
 // indexOf('hello world', 'or'); // should return -1
 // indexOf('howdy', 'hello world'); // should return -1
 // indexOf('oox', 'ooboxoooxo'); // should return 6
+
+function indexOf(needle, haystack) {
+  
+}
