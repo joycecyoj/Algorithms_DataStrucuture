@@ -5,7 +5,54 @@
 // input = [1,11,3,0,15,5,2,4,10,7,12,6] // [0,7]
 // input = [1] // [1, 1]
 // input = [11, -1, -2, -1, -2, 1, 0, 2, 3, 4, 5, 6, 12] // [-2,6]
+// inpush = [4,2,1,3] // [1,4]
 
+// Optimal Approach - Time: O(n); Space: O(n)
+// Put all integers into hash; loop through arr and check if descending is in hash then check if ascending is in hash (find all consecutive for current element inside hash)
+// if consecutive exists, mark as false and push to tempRange then compare tempRange against maxRange to find largest based on length
+
+function largestRange(arr) {
+  let tempRange = [];
+  let maxRange = [];
+  let hash = {};
+
+  for (let i = 0; i < arr.length; i++) {
+    if (!(arr[i] in hash)) {
+      hash[arr[i]] = true;
+    }
+  }
+
+  for (let j = 0; j < arr.length; j++) {
+    // check descending in hash
+    let down = arr[i] - 1;
+    while (down in hash && hash[down] !== false) {
+      tempRange = [down].concat(tempRange);
+      hash[down] = false;
+      down--;
+    }
+
+    tempRange.push(arr[j]);
+
+    // check ascending in hash
+    let up = arr[j] + 1;
+    while (up in hash && hash[up] !== false) {
+      tempRange.push(up);
+      hash[up] = false;
+      up++;
+    }
+
+    if (tempRange.length > maxRange.length) {
+      maxRange = tempRange;
+      tempRange = [];
+    } else {
+      tempRange = [];
+    }
+  }
+
+  return [maxRange[0], maxRange[maxRange.length - 1]];
+}
+
+// Time: O(nlogn); Space: O(n)
 function largestRange(arr) {
   let sortedArr = arr.sort(function(a, b) {
     return a - b;
@@ -42,5 +89,5 @@ function largestRange(arr) {
       tempR = hash[count];
     }
   }
-  return tempR
+  return tempR;
 }
