@@ -6,6 +6,7 @@
 // Input: [1,2,3,4]; Output: false
 // Input: [1,1,1,3,3,4,3,2,4,2]; Output: true
 
+// Time: O(n log n); Space: O(n)
 function containsDuplicates(nums) {
   let sortedNums = nums.sort();
 
@@ -17,6 +18,7 @@ function containsDuplicates(nums) {
   return false;
 }
 
+// Time: O(n); Space: O(n)
 function containsDuplicatesWithHash(nums) {
   let hash = {};
 
