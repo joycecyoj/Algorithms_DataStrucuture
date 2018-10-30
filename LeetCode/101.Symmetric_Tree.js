@@ -43,14 +43,48 @@ tree2.right.right = new TreeNode(3);
 // tree3 = []
 var tree3 = new TreeNode();
 
+// ---------------------------------------------------------------------------//
+
 // Recursive
+// Time: O(n)
 function isSymmetricRecursive(root) {
   if (!root) return true;
   return isMirror(root.left, root.right);
 }
 
-function isMirror(left, right) {
+function isMirrorRecursive(left, right) {
   if (left === null && right === null) return true;
   if (left === null || right === null || left.val !== right.val) return false;
-  return isMirror(left.right, right.left) && isMirror(left.left, right.right);
+  return (
+    isMirrorRecursive(left.right, right.left) &&
+    isMirrorRecursive(left.left, right.right)
+  );
+}
+
+// Iterative with Stack
+// Time: O(n)
+function isSymmetricIterative(root) {
+  if (!root) {
+    return true;
+  }
+  return isMirrorIterative(root.left, root.right);
+}
+
+function isMirrorIterative(left, right) {
+  let s1 = [left];
+  let s2 = [right];
+
+  while (s1.length > 0 || s2.length > 0) {
+    let n1 = s1.pop();
+    let n2 = s2.pop();
+
+    if (!n1 && !n2) continue;
+    if (!n1 || !n2 || n1.val !== n2.val) return false;
+
+    s1.push(n1.left);
+    s1.push(n1.right);
+    s2.push(n2.right);
+    s2.push(n2.left);
+  }
+  return true;
 }
