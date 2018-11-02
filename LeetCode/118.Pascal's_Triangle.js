@@ -10,4 +10,20 @@
 //  [1,4,6,4,1]
 // ]
 
-function generate(numRows) {}
+// Time: O(n^2)
+function generate(numRows) {
+  let final = [];
+
+  for (let i = 0; i < numRows; i++) {
+    let row = [];
+
+    for (let j = 0; j <= i; j++) {
+      if (j === 0 || j === i) {
+        row.push(1);
+      } else {
+        row.push(final[i - 1][j - 1] + final[i - 1][j]);
+      }
+    }
+    final.push(row);
+  }
+}
