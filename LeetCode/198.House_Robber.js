@@ -10,4 +10,18 @@
 // Explanation: Rob house 1 (money = 2), rob house 3 (money = 9) and rob house 5 (money = 1).
 //              Total amount you can rob = 2 + 9 + 1 = 12.
 
-function rob(nums) {}
+// Time: O(n)
+function rob(nums) {
+  let evenSum = 0;
+  let oddSum = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    if (i % 2 === 0) {
+      evenSum = Math.max(evenSum + nums[i], oddSum);
+    } else {
+      oddSum = Math.max(oddSum + nums[i], evenSum);
+    }
+  }
+
+  return Math.max(evenSum, oddSum);
+}
