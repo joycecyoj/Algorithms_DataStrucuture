@@ -61,7 +61,7 @@ function uniquePaths(m, n) {
 
 // *** More Optimal Approach - Memoization
 // Memoization
-// Time: m x n, Space: m x n
+// Time: m x n => O(n^2), Space:  m x n => O(n^2)
 function uniquePaths(m, n) {
   let cache = {}
   return move(0, 0, cache)
@@ -79,3 +79,6 @@ function uniquePaths(m, n) {
     }
   }
 }
+
+// Ex: m = 3; n = 2
+// cache = { '2,0': 1, '1,1': 1, '1,0': 2 }
