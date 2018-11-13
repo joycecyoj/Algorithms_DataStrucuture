@@ -58,3 +58,24 @@ function uniquePaths(m, n) {
 
   }
 }
+
+// *** More Optimal Approach - Memoization
+// Memoization
+// Time: m x n, Space: m x n
+function uniquePaths(m, n) {
+  let cache = {}
+  return move(0, 0, cache)
+
+  function move(c, r, cache) {
+    if (c > m-1 || r > n-1) {
+      return 0
+    } else if (c === m-1 && r === n-1) {
+      return 1
+    } else if (cache[c+', '+r] > 0) {
+      return cache[c+', '+r]
+    } else {
+      cache[c+', '+r] = move(c+1, r) + move(c, r+1)
+      return cache[c+', '+r]
+    }
+  }
+}
