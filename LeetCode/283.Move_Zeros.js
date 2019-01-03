@@ -22,3 +22,24 @@ var moveZeroes = function(nums) {
       zeroCount --
   }
 };
+
+
+function moveZeroes(nums) {
+  let i = 0
+  let j = 1
+
+  while (j < nums.length) {
+      if (nums[i] === 0 && nums[j] !== 0) {
+          let tmp = nums[i]
+          nums[i] = nums[j]
+          nums[j] = tmp
+          i++
+          j++
+      } else if (nums[i] === 0 && nums[j] === 0) {
+          j++
+      } else {
+          i++
+          j++
+      }
+  }
+}
